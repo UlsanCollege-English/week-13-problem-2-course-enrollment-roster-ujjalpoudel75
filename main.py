@@ -19,7 +19,13 @@ def build_roster(registrations):
     # TODO Step 6: Implement your algorithm in Python.
     # TODO Step 7: Run tests and add your own small manual tests.
     # TODO Step 8: Check that your solution is roughly O(n log n) time.
-    pass
+    roster = {}
+    for student_id, course_id in registrations:
+        if course_id not in roster:
+            roster[course_id] = set()
+        roster[course_id].add(student_id)
+    # Convert sets to sorted lists
+    return {course: sorted(list(students)) for course, students in roster.items()}
 
 
 if __name__ == "__main__":
